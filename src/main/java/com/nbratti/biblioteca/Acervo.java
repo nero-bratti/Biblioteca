@@ -11,6 +11,7 @@ import java.util.stream.Collectors;
 @Primary
 public class Acervo implements IAcervo {
     private List<Livro> livros;
+    private List<Usuario> usuarios;
 
     public Acervo() {
         livros = new ArrayList<>();
@@ -28,6 +29,10 @@ public class Acervo implements IAcervo {
         livros.add(new Livro(12,"One Hundred Years of Solitude", "Gabriel García Márquez", 1967));
         livros.add(new Livro(13,"The Divine Comedy", "Dante Alighieri", 1320));
 
+        usuarios = new ArrayList<>();
+        usuarios.add(new Usuario(1, "Bibliotecario", "123"));
+        usuarios.add(new Usuario(2, "Usuario 1", "1"));
+        usuarios.add(new Usuario(3, "Usuario 2", "2"));
     }
 
     @Override
@@ -55,5 +60,27 @@ public class Acervo implements IAcervo {
                 .filter(livro -> livro.getAno() == ano)
                 .toList());
     }
+
+    @Override
+    public void cadastrarLivro(int id, String titulo, String autor, int ano) {
+        livros.add(new Livro(id,titulo,autor,ano));
+    }
+
+    @Override
+    public void cadastrarUsuario(int id, String nome, String senha) {
+        usuarios.add(new Usuario(id,nome,senha));
+    }
+
+    @Override
+    public void removerUsuario(int id) {
+        usuarios.remove(id);
+    }
+
+    @Override
+    public boolean existeUsuario(int id) {
+        if (usuarios.contains(id)) return true;
+        return false;
+    }
+
 
 }

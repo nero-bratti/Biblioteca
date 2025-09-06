@@ -46,4 +46,13 @@ public class Controller {
     public List<Livro> livrosPorAno(@RequestParam("ano") int ano) {
         return acervo.livrosPorAno(ano);
     }
+
+    @GetMapping("/cadastrarLivro")
+    @CrossOrigin("*")
+    public void cadastrarLivro(@RequestParam("id") int id,
+                               @RequestParam("titulo") String titulo,
+                               @RequestParam("autor") String autor,
+                               @RequestParam("ano") int ano) {
+        acervo.cadastrarLivro(id, titulo, autor, ano);
+    }
 }
