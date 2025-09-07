@@ -1,19 +1,21 @@
-package com.nbratti.biblioteca;
+package com.nbratti.biblioteca.repository;
 
+import com.nbratti.biblioteca.interfaces.IAcervoRepository;
+import com.nbratti.biblioteca.model.Usuario;
+import com.nbratti.biblioteca.model.Livro;
 import org.springframework.context.annotation.Primary;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Component
-@Primary
-public class Acervo implements IAcervo {
+@Repository
+public class AcervoRepositoryMemoria implements IAcervoRepository {
     private List<Livro> livros;
     private List<Usuario> usuarios;
 
-    public Acervo() {
+    public AcervoRepositoryMemoria() {
         livros = new ArrayList<>();
         livros.add(new Livro(1,"The Hobbit", "J.R.R. Tolkien", 1937));
         livros.add(new Livro(2,"1984", "George Orwell", 1949));
@@ -59,6 +61,11 @@ public class Acervo implements IAcervo {
         return (livrosDoAcervo().stream()
                 .filter(livro -> livro.getAno() == ano)
                 .toList());
+    }
+
+    @Override
+    public boolean removerLivro(long codigo) {
+        return false;
     }
 
     @Override

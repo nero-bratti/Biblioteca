@@ -1,4 +1,4 @@
-package com.nbratti.biblioteca;
+package com.nbratti.biblioteca.model;
 
 public class Livro {
     private int id;

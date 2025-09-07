@@ -1,16 +1,21 @@
-package com.nbratti.biblioteca;
+package com.nbratti.biblioteca.model;
+
+import com.nbratti.biblioteca.interfaces.IAcervoRepository;
+import com.nbratti.biblioteca.interfaces.IEstatistica;
+import org.springframework.stereotype.Component;
 
 import java.util.Map;
 import java.util.stream.Collectors;
 
-public class Estatistica implements IEstatistica{
+@Component
+public class Estatistica implements IEstatistica {
     @Override
-    public int mediaDeLivrosPorAutor(IAcervo acervo) {
+    public int mediaDeLivrosPorAutor(IAcervoRepository acervo) {
         return acervo.livrosDoAcervo().size() / acervo.autoresDoAcervo().size();
     }
 
     @Override
-    public Map<Integer, Integer> anoELivros(IAcervo acervo) {
+    public Map<Integer, Integer> anoELivros(IAcervoRepository acervo) {
         return acervo.livrosDoAcervo()
                 .stream()
                 .collect(Collectors.groupingBy(
@@ -20,7 +25,7 @@ public class Estatistica implements IEstatistica{
     }
 
     @Override
-    public String autorComMaisLivros(IAcervo acervo) {
+    public String autorComMaisLivros(IAcervoRepository acervo) {
         return acervo.livrosDoAcervo()
                 .stream()
                 .collect(Collectors.groupingBy(

@@ -1,7 +1,9 @@
-package com.nbratti.biblioteca;
+package com.nbratti.biblioteca.controlers;
 
 import java.util.List;
 
+import com.nbratti.biblioteca.interfaces.IAcervoRepository;
+import com.nbratti.biblioteca.model.Livro;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,10 +12,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class Controller {
-    private IAcervo acervo;
+    private IAcervoRepository acervo;
 
     @Autowired
-    public Controller(IAcervo acervo) {
+    public Controller(IAcervoRepository acervo) {
         this.acervo = acervo;
     }
 
