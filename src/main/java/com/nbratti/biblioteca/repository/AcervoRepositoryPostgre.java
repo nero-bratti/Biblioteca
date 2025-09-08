@@ -21,7 +21,7 @@ public class AcervoRepositoryPostgre implements IAcervoRepository {
     public List<Livro> livrosDoAcervo() {
     List<Livro> resp = this.jdbcTemplate.query("SELECT * from livros",
             (rs, rowNum) ->
-                new Livro(rs.getInt("codigo"),rs.getString("titulo"),rs.getString("autor"), rs.getInt("ano")));
+                new Livro(rs.getInt("id"),rs.getString("titulo"),rs.getString("autor"), rs.getInt("ano")));
         return resp;
     }
 
@@ -44,7 +44,7 @@ public class AcervoRepositoryPostgre implements IAcervoRepository {
     public void cadastrarLivro(int id, String titulo, String autor, int ano) {
         Livro livro = new Livro(id, titulo, autor, ano);
         this.jdbcTemplate.update(
-                "INSERT INTO livros(codigo,titulo,autor,ano) VALUES (?,?,?,?)",
+                "INSERT INTO livros(id,titulo,autor,ano) VALUES (?,?,?,?)",
                 livro.getId(),livro.getTitulo(),livro.getAutor(),livro.getAno());
     }
 
@@ -65,7 +65,7 @@ public class AcervoRepositoryPostgre implements IAcervoRepository {
 
     @Override
     public boolean removerLivro(long codigo){
-        this.jdbcTemplate.update("DELETE FROM livros WHERE codigo = ?", codigo);
+        this.jdbcTemplate.update("DELETE FROM livros WHERE id = ?", codigo);
         return true;
     }
 }
