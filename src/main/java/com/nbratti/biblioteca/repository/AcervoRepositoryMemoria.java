@@ -3,7 +3,6 @@ package com.nbratti.biblioteca.repository;
 import com.nbratti.biblioteca.interfaces.IAcervoRepository;
 import com.nbratti.biblioteca.model.Usuario;
 import com.nbratti.biblioteca.model.Livro;
-import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -32,9 +31,9 @@ public class AcervoRepositoryMemoria implements IAcervoRepository {
         livros.add(new Livro(13,"The Divine Comedy", "Dante Alighieri", 1320));
 
         usuarios = new ArrayList<>();
-        usuarios.add(new Usuario(1, "Bibliotecario", "123"));
-        usuarios.add(new Usuario(2, "Usuario 1", "1"));
-        usuarios.add(new Usuario(3, "Usuario 2", "2"));
+        usuarios.add(new Usuario("Bibliotecario", "123",1));
+        usuarios.add(new Usuario("Usuario 1", "1", 0));
+        usuarios.add(new Usuario("Usuario 2", "2", 0));
     }
 
     @Override
@@ -64,29 +63,33 @@ public class AcervoRepositoryMemoria implements IAcervoRepository {
     }
 
     @Override
-    public boolean removerLivro(long codigo) {
-        return false;
-    }
-
-    @Override
-    public void cadastrarLivro(int id, String titulo, String autor, int ano) {
+    public boolean cadastrarLivro(int id, String titulo, String autor, int ano) {
         livros.add(new Livro(id,titulo,autor,ano));
+        return true;
     }
 
     @Override
-    public void cadastrarUsuario(int id, String nome, String senha) {
-        usuarios.add(new Usuario(id,nome,senha));
-    }
-
-    @Override
-    public void removerUsuario(int id) {
-        usuarios.remove(id);
-    }
-
-    @Override
-    public boolean existeUsuario(int id) {
-        if (usuarios.contains(id)) return true;
+    public boolean removerLivro(int id) {
         return false;
+    }
+
+    @Override
+    public boolean cadastrarUsuario(String nome, String senha, int autoridade) {
+        usuarios.add(new Usuario(nome, senha, autoridade));
+        return true;
+    }
+
+    @Override
+    public boolean removerUsuario(String nome) {
+        usuarios.removeIf(u -> u.getNome().equals(nome));
+        return true;
+    }
+
+    @Override
+    public boolean existeUsuario(String nome) {
+        if (usuarios.stream().anyMatch(u -> u.getNome().equals(nome))) {
+            return true;
+        } else return false;
     }
 
 

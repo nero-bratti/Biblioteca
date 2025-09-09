@@ -4,11 +4,9 @@ import java.util.List;
 
 import com.nbratti.biblioteca.interfaces.IAcervoRepository;
 import com.nbratti.biblioteca.model.Livro;
+import com.nbratti.biblioteca.model.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class Controller {
@@ -57,4 +55,11 @@ public class Controller {
                                @RequestParam("ano") int ano) {
         acervo.cadastrarLivro(id, titulo, autor, ano);
     }
+
+    @PostMapping("/cadastrarUsuario")
+    @CrossOrigin("*")
+    public void cadastrarUsuario(@RequestBody Usuario usuario) {
+        acervo.cadastrarUsuario(usuario.getNome(), usuario.getSenha(), usuario.getAutoridade());
+    }
+
 }

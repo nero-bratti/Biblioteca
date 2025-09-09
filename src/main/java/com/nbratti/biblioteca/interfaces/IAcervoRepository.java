@@ -6,15 +6,17 @@ import java.util.List;
 
 
 public interface IAcervoRepository {
-    public List<Livro> livrosDoAcervo();
-    public List<String> autoresDoAcervo();
-    public List<Livro> livrosDoAutor(String autor);
-    public List<Livro> livrosPorAno(int ano);
 
-    boolean removerLivro(long codigo);
+    List<Livro> livrosDoAcervo();
+    List<String> autoresDoAcervo();
 
-    void cadastrarLivro(int id, String titulo, String autor, int ano);
-    public void cadastrarUsuario(int id, String nome, String senha);
-    public void removerUsuario(int id);
-    public boolean existeUsuario(int id);
+    List<Livro> livrosDoAutor(String autor);
+    List<Livro> livrosPorAno(int ano);
+
+    boolean cadastrarLivro(int id, String titulo, String autor, int ano);
+    boolean removerLivro(int id);
+
+    boolean cadastrarUsuario(String nome, String senha, int autoridade);
+    boolean removerUsuario(String nome);
+    boolean existeUsuario(String nome);
 }
