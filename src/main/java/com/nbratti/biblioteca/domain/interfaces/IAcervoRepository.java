@@ -1,8 +1,8 @@
-package com.nbratti.biblioteca.interfaces;
-
-import com.nbratti.biblioteca.model.Livro;
+package com.nbratti.biblioteca.domain.interfaces;
 
 import java.util.List;
+
+import com.nbratti.biblioteca.domain.model.Livro;
 
 
 public interface IAcervoRepository {

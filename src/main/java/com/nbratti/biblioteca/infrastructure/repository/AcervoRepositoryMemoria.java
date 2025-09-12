@@ -1,8 +1,9 @@
-package com.nbratti.biblioteca.repository;
+package com.nbratti.biblioteca.infrastructure.repository;
 
-import com.nbratti.biblioteca.interfaces.IAcervoRepository;
-import com.nbratti.biblioteca.model.Usuario;
-import com.nbratti.biblioteca.model.Livro;
+import com.nbratti.biblioteca.domain.interfaces.IAcervoRepository;
+import com.nbratti.biblioteca.domain.model.Livro;
+import com.nbratti.biblioteca.domain.model.Usuario;
+
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;

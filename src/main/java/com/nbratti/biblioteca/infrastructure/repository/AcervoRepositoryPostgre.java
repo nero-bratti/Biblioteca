@@ -1,7 +1,8 @@
-package com.nbratti.biblioteca.repository;
+package com.nbratti.biblioteca.infrastructure.repository;
 
-import com.nbratti.biblioteca.interfaces.IAcervoRepository;
-import com.nbratti.biblioteca.model.Livro;
+import com.nbratti.biblioteca.domain.interfaces.IAcervoRepository;
+import com.nbratti.biblioteca.domain.model.Livro;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.jdbc.core.JdbcTemplate;

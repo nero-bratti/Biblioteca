@@ -1,4 +1,4 @@
-package com.nbratti.biblioteca.model;
+package com.nbratti.biblioteca.domain.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -1,10 +1,11 @@
-package com.nbratti.biblioteca.controlers;
+package com.nbratti.biblioteca.domain.controlers;
 
 import java.util.List;
 
-import com.nbratti.biblioteca.interfaces.IAcervoRepository;
-import com.nbratti.biblioteca.model.Livro;
-import com.nbratti.biblioteca.model.Usuario;
+import com.nbratti.biblioteca.domain.interfaces.IAcervoRepository;
+import com.nbratti.biblioteca.domain.model.Livro;
+import com.nbratti.biblioteca.domain.model.Usuario;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
